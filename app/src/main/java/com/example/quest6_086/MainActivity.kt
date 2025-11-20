@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Quest6_086Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    DataApp(
+                    SiswaApp(
                         modifier = Modifier
                     )
                 }

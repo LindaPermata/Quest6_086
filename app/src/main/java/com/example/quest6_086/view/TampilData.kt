@@ -24,30 +24,31 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.quest6_086.R
+import com.example.quest6_086.model.Siswa
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TampilData(
-    onBackBtnClick:()->Unit
+    statusUiSiswa: Siswa,
+    onBackBtnClick:()-> Unit
 ){
     val items = listOf(
-        Pair(stringResource(id = R.string.nama_lengkap), "Contoh Nama"),
-        Pair(stringResource(id = R.string.jenis_kelamin), "Lainnya"),
-        Pair(stringResource(id = R.string.alamat), "Yogyakarta")
+        Pair(stringResource( R.string.nama_lengkap), statusUiSiswa.nama),
+        Pair(stringResource(R.string.gender), statusUiSiswa.gender),
+        Pair(stringResource(R.string.alamat), statusUiSiswa.alamat)
     )
     Scaffold(modifier = Modifier,
         {
             TopAppBar(
-                title = {
-                    Text(
-                        text = stringResource(id = R.string.tampil),
-                        color = Color.White
-                    )},
+                title = {Text(text = stringResource(id = R.string.tampil),
+                    color = Color.White
+                )},
                 colors = TopAppBarDefaults
-                    .mediumTopAppBarColors(colorResource(id=R.color.teal_700)
+                    .mediumTopAppBarColors(colorResource
+                        (id = R.color.teal_700)
                     )
             )
-        }) { isiRuang->
+        }){ isiRuang->
         Column(modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.SpaceBetween) {
             Column(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
