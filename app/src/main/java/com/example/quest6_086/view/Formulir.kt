@@ -36,8 +36,10 @@ import com.example.quest6_086.R
 
 @Composable
 fun FormIsian(
-    jenisK:List<String> = listOf("Laki-laki","Perempuan"),
-    OnSubmitBtnClick:() -> Unit,
+    //jenisK:List<String> = listOf("Laki-laki","Perempuan"),
+    pilihanJK: List<String>,
+    OnSubmitBtnClick:(MutableList<String>) -> Unit,
+    modifier: Modifier = Modifier
 
 ){
     var txtNama by rememberSaveable { mutableStateOf("")}
@@ -67,20 +69,22 @@ fun FormIsian(
             horizontalAlignment = Alignment.CenterHorizontally)
         {
             OutlinedTextField(
-                value = "",
+                value = txtNama,
                 singleLine = true,
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .width(250.dp),
                 label = { Text(text = "Nama Lengkap") },
-                onValueChange = {},
+                onValueChange = {
+                    txtNama = it
+                },
             )
             HorizontalDivider(modifier = Modifier
                 .padding(20.dp)
                 .width(250.dp), thickness = Thickness,color =
                 Color.Red)
             Row{
-                jenisK.forEach {
+                pilihanJK.forEach {
                         item->
                     Row(verticalAlignment = Alignment.CenterVertically){
                         RadioButton(
